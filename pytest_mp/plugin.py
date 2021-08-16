@@ -377,7 +377,7 @@ def pytest_configure(config):
     if config.option.xmlpath is not None:
         from pytest_mp.junitxml import MPLogXML
         synchronization['node_reporters'] = manager.list()
-        synchronization['node_reporters_lock'] = manager.Lock()
+        synchronization['node_reporters_lock'] = multiprocessing.Lock()
         xmlpath = config.option.xmlpath
         config.pluginmanager.unregister(config._xml)
         config._xml = MPLogXML(xmlpath, config.option.junitprefix, config.getini("junit_suite_name"), manager)
