@@ -352,8 +352,8 @@ def pytest_runtest_logreport(report):
     if 'stats' in synchronization:
         with synchronization['stats_lock']:
             if report.failed and not synchronization['stats']['failed']:
-                if report.when == 'call':
-                    synchronization['stats']['failed'] = True
+                # if report.when == 'call':
+                synchronization['stats']['failed'] = True
 
 
 @pytest.mark.trylast
